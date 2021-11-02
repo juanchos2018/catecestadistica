@@ -1,11 +1,11 @@
-<template>
+﻿<template>
   <div>
 
 
     	<a-card :bordered="false" class="widget-1">
 
         <div style="display:flex;justify-content: space-between">
-         <h3 style="width:50px">{{modelTema.nombre_tema }}  </h3>
+         <h3 >{{modelTema.nombre_tema }}  </h3>
           <h3 style="float:right">{{modelTema.dia }} / {{modelTema.fecha}} </h3>
         </div>
     

@@ -138,12 +138,12 @@ export default {
         documento:'',
         fecha_registro:'',
         telefeno:'',
-        institucion:'',        
+        institucion:'Universidad Privada de Tacna',        
         correo: "",
         estado:0,
         edad:'',
         sexo:0,
-        pais:'',
+        pais:'Perú',
         nivel:''
       },
       errors: {
@@ -152,7 +152,7 @@ export default {
         correo: false,       
       },
      nivel : ['Secundaria','Técnico','Universitario','Profesional','Maestrías o más','otros'],
-     ciclos : ['1er Ciclo','2do Ciclo','3er Ciclo','4to Ciclo','5to Ciclo','6to Ciclo','7mo Ciclo','8vo Ciclo','9no Ciclo','10mo Ciclo'],
+     ciclos : ['1er Ciclo','2do Ciclo','3er Ciclo','4to Ciclo','5to Ciclo','6to Ciclo','7mo Ciclo','8vo Ciclo','9no Ciclo','10mo Ciclo','T'],
      grado : ['1ro de Secundaria','2do de Secundaria','3ro de Secundaria','4to de Secundaria','5to de Secundaria'],
 
 

@@ -44,7 +44,9 @@
       </a-col>
 
       <a-col :span="24" :md="10" :lg="10" :xl="10">
-        <img src="images/catec.jpg" width="310" height="430" alt="" />
+             <VueApexCharts  type="bar" height="410" :options="chartOptions" :series="series"></VueApexCharts>
+
+        <!-- <img src="images/catec.jpg" width="310" height="430" alt="" /> -->
              <!-- <img src="images/redjuvenil.png" width="270" height="300" alt="" /> -->
       </a-col>
       <!-- Sign In Image Column -->
@@ -56,10 +58,79 @@
 import axios from "axios";
 const Swal = require("sweetalert2");
 import { mapState } from 'vuex'
+import VueApexCharts from 'vue-apexcharts'
 
 export default {
+  components: {   
+  VueApexCharts,
+ 
+  },
   data() {
     return {
+       series: [{
+            name: 'coins',
+            data: [21, 20, 19, 21, 19, 20, 19, 17, 18, 17, 18, 17, 18, 17, 17, 18, 18, 18, 16, 17, 18, 19,
+              19, 17, 18, 17, 16, 18, 19, 17, 19, 21
+            ]
+          }],
+          chartOptions: {
+            chart: {
+              type: 'bar',
+              height: 410,
+              animations: {
+                enabled: false
+              }
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+                barHeight: '100%',
+            
+              },
+            },
+            dataLabels: {
+              enabled: false,
+            },
+            stroke: {
+              colors: ["#fff"],
+              width: 0.2
+            },
+            labels: Array.apply(null, {length: 39}).map(function(el, index){
+              return index + 1;
+            }),
+            yaxis: {
+              axisBorder: {
+                show: false
+              },
+              axisTicks: {
+                show: false
+              },
+              labels: {
+                show: false
+              },
+              title: {
+                text: 'CATEC',
+              },
+            },
+            grid: {
+              position: 'back'
+            },
+            title: {
+              text: 'Paths filled by clipped image',
+              align: 'right',
+              offsetY: 30
+            },
+            fill: {
+              type: 'image',
+              opacity: 0.87,
+              image: {
+                src: ['images/catec.jpg'],
+                width: 466,
+                height: 406
+              }
+            },
+          },
+
       // Binded model property for "Sign In Form" switch button for "Remember Me" .
       rememberMe: true,
       USER_ADMIN:'admin',

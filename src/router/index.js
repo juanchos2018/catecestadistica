@@ -111,6 +111,15 @@ let routes = [{
             import ('../views/Evento/EventoAsistidos.vue'),
     },
 
+    {
+        path: '/prueba/',
+        name: 'Prueba',
+        layout: "dashboard",
+        props: true,
+        component: () =>
+            import ('../views/Evento/Prueba.vue'),
+    },
+
 
     //  teameEvento
 

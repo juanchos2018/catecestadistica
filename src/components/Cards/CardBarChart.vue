@@ -110,7 +110,7 @@ export default {
         lista1=response.data;
          lista1.forEach(item=>{
                         
-                  me.options.xaxis.categories.push(item.dia)
+                   me.options.xaxis.categories.push(item.dia)
                    me.series[0].data.push(item.TotalAsintetes)
                       
               })
