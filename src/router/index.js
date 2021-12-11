@@ -119,7 +119,14 @@ let routes = [{
         component: () =>
             import ('../views/Evento/Prueba.vue'),
     },
-
+    {
+        path: '/concurso/',
+        name: 'Concurso',
+        layout: "dashboard",
+        props: true,
+        component: () =>
+            import ('../views/Evento/Concurso.vue'),
+    },
 
     //  teameEvento
 

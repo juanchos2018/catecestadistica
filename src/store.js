@@ -5,10 +5,10 @@ Vue.use(Vuex)
 const state = {
     sidebarShow: 'responsive',
     sidebarMinimize: true,
-    ///  url_base: 'http://localhost/apicatec/',
+    url_base: 'http://localhost/apicatec/',
     tipousuario: '',
     id_usuario: '',
-    url_base: 'https://apiphp.edsyscomp.com/',
+    /// url_base: 'https://apiphp.edsyscomp.com/',
 
 }
 

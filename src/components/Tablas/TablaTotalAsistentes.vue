@@ -6,7 +6,7 @@
   >
     <template #title>
       <div style="display:flex;justify-content: space-between">
-        <h5 class="font-semibold m-0">Lista Estudiantes</h5>
+        <h5 class="font-semibold m-0">Lista Asistentes mayor igual a 6</h5>
       
         <a-input-search
           placeholder="Buscar"

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <!-- Counter Widgets -->
+  
+    <h5>Visitantes de las plataformas</h5>
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col
         :span="24"
@@ -24,6 +25,9 @@
       </a-col>
     </a-row>
     <hr />
+
+    <h5>Estudio de los Asistentes por Ponencia</h5>
+
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col
         :span="24"
@@ -49,13 +53,9 @@
 
     <br />
 
-     <a-row :gutter="24" type="flex" align="stretch">
-      <a-col
-        :span="24"
-        :lg="24"
-        class="mb-24"
-        
-      >
+    <a-row :gutter="24" type="flex" align="stretch">
+      <a-col :span="24" :lg="24" class="mb-24">
+      
         <a-card :bordered="false" class="dashboard-bar-chart">
           <VueApexCharts
             type="line"
@@ -74,11 +74,13 @@
     </a-row>
 
 
-    <!-- grfico 3 -->
+
+   
+    <h5>Estudio de Nivel Academico por Ponencia</h5>
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col
         :span="24"
-        :lg="8"
+        :lg="10"
         class="mb-24"
         v-for="item in itemgrafico3"
         :key="item.id_ponente"
@@ -98,11 +100,14 @@
         </a-card>
       </a-col>
     </a-row>
-    <!-- grfico 4 -->
+    
+
+ 
+    <h5>Estudio de Sexo por Ponencia</h5>
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col
         :span="24"
-        :lg="8"
+        :lg="10"
         class="mb-24"
         v-for="item in itemgrafico4"
         :key="item.id_ponente"
@@ -114,15 +119,16 @@
             :series="item.series"
           ></VueApexCharts>
           <div class="card-title">
-            <h6>Grafico de Sexo</h6>
-            <p>
-              <span class="text-success">{{ item.tema }}</span>
-            </p>
+            <h4>Grafico de Sexo</h4>
+            
+            <h5 class="text-success">{{ item.tema }}</h5>
+            
           </div>
         </a-card>
       </a-col>
     </a-row>
 
+    <h5>Estudio de Edad por Ponencia</h5>
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col
         :span="24"
@@ -148,23 +154,55 @@
       </a-col>
     </a-row>
 
-    <a-row :gutter="24" type="flex" align="stretch">
-      <a-col :span="24" :lg="12" class="mb-24">
-        <a-card :bordered="false" class="dashboard-bar-chart">
-           <VueApexCharts type="bar" :options="chartOptions2" :series="series2"></VueApexCharts>
 
+ <h5>Estudio de Asistentes de la Universidad</h5>
+    <a-row :gutter="24" type="flex" align="stretch">
+      <a-col
+        :span="24"
+        :lg="14"
+        class="mb-24"
+        v-for="item in itemgrafico9"
+        :key="item.id_tema"
+      >
+        <a-card :bordered="false" class="dashboard-bar-chart">
+          <VueApexCharts
+            type="bar"
+            height="350"
+            :options="item.chartOptions"
+            :series="item.series"
+          ></VueApexCharts>
           <div class="card-title">
-            <h6>Asistentes segun por modalidad de registro</h6>
-            <p><span class="text-success">+23</span></p>
+            <h6>Grafico de Asistentes de UPT</h6>
+            <p>
+              <span class="text-success">{{ item.tema }}</span>
+            </p>
           </div>
         </a-card>
       </a-col>
     </a-row>
 
+
+    <a-row :gutter="24" type="flex" align="stretch">
+      <a-col :span="24" :lg="12" class="mb-24">
+        <a-card :bordered="false" class="dashboard-bar-chart">
+          <VueApexCharts
+            type="bar"
+            :options="chartOptions2"
+            :series="series2"
+          ></VueApexCharts>
+
+          <div class="card-title">
+            <h6>Asistentes segun por modalidad de registro</h6>
+
+          </div>
+        </a-card>
+      </a-col>
+    </a-row>
+    
+   
+    <h5>Estudio de Lugar de Procedencia</h5>
     <a-row :gutter="24" type="flex" align="stretch">
       <a-col :span="24" :lg="16" class="mb-24">
-        <!-- <CardBarChart></CardBarChart> -->
-
         <a-card
           :bordered="false"
           class="dashboard-bar-chart"
@@ -191,22 +229,18 @@
       </a-col>
       <a-col :span="24" :lg="8" class="mb-24">
         <a-card :bordered="false" class="dashboard-bar-chart">
-          <!-- <VueApexCharts type="bar" height="350" :options="chartOptions" :series="series"></VueApexCharts> -->
           <TablaPaises :data="itemgrafico5" :columns="Cabecera"></TablaPaises>
         </a-card>
       </a-col>
     </a-row>
 
-
-
     <a-row :gutter="24" type="flex" align="stretch">
-      
       <a-col :span="24" :lg="24" class="mb-24">
         <a-card :bordered="false" class="dashboard-bar-chart">
-          <!-- <VueApexCharts type="bar" height="350" :options="chartOptions" :series="series"></VueApexCharts> -->
-          <TablaTotalAsistentes :data="itemTotalAsistentes" :columns="Cabecera5"></TablaTotalAsistentes>
-
-
+          <TablaTotalAsistentes
+            :data="itemTotalAsistentes"
+            :columns="Cabecera5"
+          ></TablaTotalAsistentes>
         </a-card>
       </a-col>
     </a-row>
@@ -237,11 +271,7 @@ import CardInfo2 from "../components/Cards/CardInfo2";
 import TablaMensaje from "../components/Tablas/TablaMensaje";
 import TablaPaises from "../components/Tablas/TablaPaises";
 import TablaTotalAsistentes from "../components/Tablas/TablaTotalAsistentes";
-
-
 import VueApexCharts from "vue-apexcharts";
-//import TablaAsistentesTotal from "../components/Tablas/TablaAsistentesTotal";
-//import MapChart from 'vue-map-chart'
 import MapChart from "vue-chart-map";
 
 export default {
@@ -258,17 +288,12 @@ export default {
     VueApexCharts,
     TablaPaises,
     MapChart,
-    TablaTotalAsistentes
+    TablaTotalAsistentes,
     //  TablaAsistentesTotal
   },
   data() {
     return {
-      status: "success",
-
-      itemvisitantes: [
-        { id_espacio: 1, nombre_espacio: "espacio1", visitantes: 5 },
-        { id_espacio: 2, nombre_espacio: "espacio 2", visitantes: 10 },
-      ],
+      status: "success",     
       itemmensajes: [],
       evntosDias: [],
       itemgrafico3: [],
@@ -278,106 +303,10 @@ export default {
       itemgrafico6: [],
       itemgrafico7: [],
       itemgrafico8: {},
-      itemTotalAsistentes:[],
+      itemgrafico9: [],
+      itemTotalAsistentes: [],
+      itemTotalAsistentes: [],
       series: [14, 23, 21, 17, 15, 10, 12],
-      chartOptions2: {
-        chart: {
-          type: "polarArea",
-        },
-        labels: [
-          "Rose A",
-          "Rose B",
-          "Rose C",
-          "Rose D",
-          "Rose E",
-          "Rose E",
-          "Rose E",
-        ],
-        stroke: {
-          colors: ["#fff"],
-        },
-        fill: {
-          opacity: 0.8,
-        },
-        responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200,
-              },
-              legend: {
-                position: "bottom",
-              },
-            },
-          },
-        ],
-      },
-
-      chartOptions1: {
-        chart: {
-          height: 350,
-          type: "bar",
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            dataLabels: {
-              position: "top", // top, center, bottom
-            },
-          },
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function(val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: "12px",
-            colors: ["#304758"],
-          },
-        },
-        xaxis: {
-          categories: ["criptomondeas", "videjuegos", "hackint"],
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          crosshairs: {
-            fill: {
-              type: "gradient",
-              gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
-              },
-            },
-          },
-          tooltip: {
-            enabled: true,
-          },
-        },
-
-        yaxis: {
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: false,
-            formatter: function(val) {
-              return val + "%";
-            },
-          },
-        },
-      },
 
       chartOptions: {
         chart: {
@@ -420,8 +349,6 @@ export default {
           },
         },
       },
-
-      itemTotalAsistentes: [],
       modelusuario: { id_usuario: 0 },
 
       Cabecera: [
@@ -434,7 +361,6 @@ export default {
           dataIndex: "cantidad",
         },
       ],
-
       Cabecera5: [
         {
           title: "NOMBES",
@@ -444,48 +370,74 @@ export default {
           title: "ASISTENCIAS",
           dataIndex: "cantidad",
         },
-        
       ],
-        Cabecera: [
+      series2: [
         {
-          title: "PAIS",
-          dataIndex: "pais",
-        },
-        {
-          title: "TOTAL",
-          dataIndex: "cantidad",
+          data: [],
         },
       ],
+      chartOptions2: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 4,
+            horizontal: true,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        colors: [
+          function({ value, seriesIndex, w }) {
+            return (
+              "#" +
+              (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
+            );
+          },
+        ],
 
-           series2: [{
-            data: []
+        xaxis: {
+          categories: [],
+        },
+      },
+
+      
+      series3: [{
+              name: "Desktops",
+              data: []
           }],
-          
-          chartOptions2: {
+        chartOptions3: {
             chart: {
-              type: 'bar',
-              height: 350
-            },
-            plotOptions: {
-              bar: {
-                borderRadius: 4,
-                horizontal: true,
+              height: 350,
+              type: 'line',
+              zoom: {
+                enabled: false
               }
             },
             dataLabels: {
               enabled: false
             },
-            colors: [
-                      function({ value, seriesIndex, w }) {
-                        return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
-                       
-                      }
-                 ],
-         
+            stroke: {
+              curve: 'straight'
+            },
+            title: {
+              text: 'Product Trends by Month',
+              align: 'left'
+            },
+            grid: {
+              row: {
+                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                opacity: 0.5
+              },
+            },
             xaxis: {
               categories: [],
             }
           },
+
 
     };
   },
@@ -494,7 +446,7 @@ export default {
   },
   mounted() {
     //  this.LsitaTotalAsistntes();
-    // this.MostrarTotalVisitantes();
+  
     this.LsitaEventoDia(); // ok
     this.LsitaTodalPorDiaPonente();
     this.Lsitagrafico3();
@@ -504,22 +456,22 @@ export default {
     this.Lsitagrafico7();
     this.Lsitagrafico8();
     this.LsitagraficoMayorAsistentes();
+    this.Lsitagrafico9();
   },
   methods: {
-    LsitagraficoMayorAsistentes(){
-        let me = this;
+    LsitagraficoMayorAsistentes() {
+      let me = this;
       let url = me.url_base + "Control/Consulta.php?tipo=grafico7";
       axios({
         method: "GET",
         url: url,
       })
         .then(function(response) {
-            me.itemTotalAsistentes = response.data;
+          me.itemTotalAsistentes = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
-
     },
     LsitaEventoDia() {
       let me = this;
@@ -609,6 +561,7 @@ export default {
           console.log(error);
         });
     },
+
     Lsitagrafico7() {
       let me = this;
       let url = me.url_base + "Control/Consulta.php?tipo=grafico8";
@@ -617,19 +570,19 @@ export default {
         url: url,
       })
         .then(function(response) {
-          console.log(response)
-           me.itemgrafico7 = response.data;
-           me.itemgrafico7.forEach(item=>{
-               me.chartOptions2.xaxis.categories.push(item.dominio)
-               me.series2[0].data.push(item.cantidad)
-           })
-           //lista1.forEach(item=>{
+          console.log(response);
+          me.itemgrafico7 = response.data;
+          me.itemgrafico7.forEach((item) => {
+            me.chartOptions2.xaxis.categories.push(item.dominio);
+            me.series2[0].data.push(item.cantidad);
+          });
+          //lista1.forEach(item=>{
         })
         .catch((error) => {
           console.log(error);
         });
     },
- Lsitagrafico8() {
+    Lsitagrafico8() {
       let me = this;
       let url = me.url_base + "Control/Consulta.php?tipo=grafico9";
       axios({
@@ -637,16 +590,30 @@ export default {
         url: url,
       })
         .then(function(response) {
-         // console.log(response)
-           me.itemgrafico8 = response.data;
-          
-           //lista1.forEach(item=>{
+          // console.log(response)
+          me.itemgrafico8 = response.data;
+          me.series3[0].data=response.data.series[0].data;
+          me.chartOptions3.xaxis.categories=response.data.chartOptions.xaxis.categories;
+          //lista1.forEach(item=>{
         })
         .catch((error) => {
           console.log(error);
         });
     },
-
+ Lsitagrafico9() {
+      let me = this;
+      let url = me.url_base + "Control/Consulta.php?tipo=grafico10";
+      axios({
+        method: "GET",
+        url: url,
+      })
+        .then(function(response) {
+          me.itemgrafico9 = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     //itemgrafico4-*--------------------------
     LsitaTotalAsistntes() {
       let me = this;
@@ -664,21 +631,7 @@ export default {
         });
     },
 
-    MostrarTotalVisitantes() {
-      let me = this;
-      let url = me.url_base + "Control/Consulta.php?tipo=Total";
-
-      axios({
-        method: "GET",
-        url: url,
-      })
-        .then(function(response) {
-          me.itemvisitantes = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    
   },
 };
 </script>
